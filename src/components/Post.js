@@ -17,7 +17,7 @@ function Post({ postId, username, index, caption, imageUrl, displayName }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
   const subCollection = collection(db, `posts/${postId}/comments`);
-  const commentInputControl = document.getElementById("commentInput");
+  const commentInputControl = document.querySelector(".commentInput");
 
   const handleComment = () => {
     try {
@@ -80,7 +80,7 @@ function Post({ postId, username, index, caption, imageUrl, displayName }) {
         );
       })}
       <input
-        id="commentInput"
+        className="commentInput"
         onChange={(e) => {
           setComment(e.target.value);
         }}

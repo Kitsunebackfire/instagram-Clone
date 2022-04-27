@@ -1,14 +1,25 @@
 .imageUpload {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 10px;
 
   background-color: white;
-  border-top: 1px solid lightgray;
+}
+
+.imageUpload__icon {
+  height: 30px;
+  width: auto;
+}
+.imageUpload__icon:hover {
+  color: rgb(46, 125, 253);
+}
+
+.imageUpload__icon:active {
+  color: rgb(150, 186, 253);
 }
 
 .imageUpload__modal {

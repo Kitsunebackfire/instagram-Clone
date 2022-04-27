@@ -74,13 +74,13 @@ const ImageUpload = ({ storage, user }) => {
 
   return (
     <div className="imageUpload">
-      <button onClick={handleOpenUpload}>
-        <Icon
-          path={mdiCameraPlusOutline}
-          alt="icon"
-          style={{ height: "100px" }}
-        />
-      </button>
+      <Icon
+        className="imageUpload__icon"
+        onClick={handleOpenUpload}
+        path={mdiCameraPlusOutline}
+        alt="icon"
+      />
+
       <Modal
         open={openUpload}
         onClose={() => setOpenUpload(false)}

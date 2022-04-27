@@ -135,6 +135,11 @@ function App() {
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzFj87v7cdZAMuQzMol5zsNpdwU87kaGE270YOjLf8vIklU9dfvQnZ_yKE5AiLvgttPA&usqp=CAU"
             className="app__headerImage"
           />
+          {user?.displayName ? (
+            <ImageUpload user={user} storage={storage} />
+          ) : (
+            <h4>Login to upload</h4>
+          )}
           <Modal
             user={user}
             setUser={setUser}
@@ -156,11 +161,6 @@ function App() {
             handleOpenSignUp={handleOpenSignUp}
           />
         </div>
-        {user.displayName ? (
-          <ImageUpload user={user} storage={storage} />
-        ) : (
-          <h4>Sorry you need to login to upload</h4>
-        )}
 
         <div className="app__posts">
           {posts.map((post) => {
