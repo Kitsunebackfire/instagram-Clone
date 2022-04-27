@@ -2,23 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Post from "./components/Post";
 import { postsColRef, db, auth, storage } from "./firebase";
-import {
-  onSnapshot,
-  updateDoc,
-  deleteDoc,
-  query,
-  orderBy,
-} from "firebase/firestore";
+import { onSnapshot, query, orderBy } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   updateProfile,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 import Modal from "./components/Modal";
 import ImageUpload from "./components/ImageUpload";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -127,57 +119,55 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div className="app">
-        <div className="app__header">
-          <img
-            alt="instagram logo"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzFj87v7cdZAMuQzMol5zsNpdwU87kaGE270YOjLf8vIklU9dfvQnZ_yKE5AiLvgttPA&usqp=CAU"
-            className="app__headerImage"
-          />
-          {user?.displayName ? (
-            <ImageUpload user={user} storage={storage} />
-          ) : (
-            <h4>Login to upload</h4>
-          )}
-          <Modal
-            user={user}
-            setUser={setUser}
-            signUp={signUp}
-            username={username}
-            password={password}
-            email={email}
-            setUsername={setUsername}
-            setPassword={setPassword}
-            setEmail={setEmail}
-            signIn={signIn}
-            openSignIn={openSignIn}
-            setOpenSignIn={setOpenSignIn}
-            handleCloseSignIn={handleCloseSignIn}
-            handleOpenSignIn={handleOpenSignIn}
-            openSignUp={openSignUp}
-            setOpenSignUp={setOpenSignUp}
-            handleCloseSignUp={handleCloseSignUp}
-            handleOpenSignUp={handleOpenSignUp}
-          />
-        </div>
-
-        <div className="app__posts">
-          {posts.map((post) => {
-            return (
-              <Post
-                displayName={displayName}
-                key={post.id}
-                postId={post.id}
-                username={post.username}
-                imageUrl={post.imageUrl}
-                caption={post.caption}
-              />
-            );
-          })}
-        </div>
+    <div className="app">
+      <div className="app__header">
+        <img
+          alt="instagram logo"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzFj87v7cdZAMuQzMol5zsNpdwU87kaGE270YOjLf8vIklU9dfvQnZ_yKE5AiLvgttPA&usqp=CAU"
+          className="app__headerImage"
+        />
+        {user?.displayName ? (
+          <ImageUpload user={user} storage={storage} />
+        ) : (
+          <h4 className="app__loginToUpload">Login to upload</h4>
+        )}
+        <Modal
+          user={user}
+          setUser={setUser}
+          signUp={signUp}
+          username={username}
+          password={password}
+          email={email}
+          setUsername={setUsername}
+          setPassword={setPassword}
+          setEmail={setEmail}
+          signIn={signIn}
+          openSignIn={openSignIn}
+          setOpenSignIn={setOpenSignIn}
+          handleCloseSignIn={handleCloseSignIn}
+          handleOpenSignIn={handleOpenSignIn}
+          openSignUp={openSignUp}
+          setOpenSignUp={setOpenSignUp}
+          handleCloseSignUp={handleCloseSignUp}
+          handleOpenSignUp={handleOpenSignUp}
+        />
       </div>
-    </Router>
+
+      <div className="app__posts">
+        {posts.map((post) => {
+          return (
+            <Post
+              displayName={displayName}
+              key={post.id}
+              postId={post.id}
+              username={post.username}
+              imageUrl={post.imageUrl}
+              caption={post.caption}
+            />
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

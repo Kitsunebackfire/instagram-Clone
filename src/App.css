@@ -9,11 +9,12 @@
 
 .app__header {
   background-color: white;
-  padding: 20px;
+  padding: 20px 70px 20px 70px;
   object-fit: contain;
   border-bottom: 1px solid lightgray;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .app__headerImage {
@@ -29,4 +30,10 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+}
+
+.app__loginToUpload {
+  display: flex;
+  align-self: center;
+  justify-self: center;
 }
