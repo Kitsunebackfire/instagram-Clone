@@ -156,6 +156,11 @@ function App() {
             handleOpenSignUp={handleOpenSignUp}
           />
         </div>
+        {user.displayName ? (
+          <ImageUpload user={user} storage={storage} />
+        ) : (
+          <h4>Sorry you need to login to upload</h4>
+        )}
 
         <div className="app__posts">
           {posts.map((post) => {
@@ -171,11 +176,6 @@ function App() {
             );
           })}
         </div>
-        {user.displayName ? (
-          <ImageUpload user={user} storage={storage} />
-        ) : (
-          <h4>Sorry you need to login to upload</h4>
-        )}
       </div>
     </Router>
   );
